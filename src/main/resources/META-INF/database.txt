@@ -1,0 +1,6 @@
+
+MaxMind database:
+https://www.maxmind.com/en/geoip2-services-and-databases
+
+GeoLite2 Free Geolocation Data:
+https://www.maxmind.com/en/accounts/current/geoip/downloads
