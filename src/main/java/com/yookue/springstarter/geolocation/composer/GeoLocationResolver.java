@@ -19,7 +19,7 @@ package com.yookue.springstarter.geolocation.composer;
 
 import java.io.IOException;
 import java.util.Locale;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 
 

@@ -19,7 +19,7 @@ package com.yookue.springstarter.geolocation.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.springframework.core.io.Resource;
 import org.springframework.util.CollectionUtils;
 import com.maxmind.db.CHMCache;

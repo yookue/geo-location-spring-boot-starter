@@ -18,11 +18,8 @@ package com.yookue.springstarter.geolocation.config;
 
 
 import java.io.IOException;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DurationUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -40,6 +37,8 @@ import com.yookue.springstarter.geolocation.composer.impl.DefaultGeoLocationReso
 import com.yookue.springstarter.geolocation.enumeration.GeoDatabaseType;
 import com.yookue.springstarter.geolocation.property.GeoLocationProperties;
 import com.yookue.springstarter.geolocation.util.GeoDatabaseUtils;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 
 /**
@@ -113,13 +112,13 @@ public class GeoLocationAutoConfiguration {
             builder.locales(remoteSite.getLocales());
         }
         if (remoteSite.getConnectTimeout() != null) {
-            builder.connectTimeout(DurationUtils.toMillisInt(remoteSite.getConnectTimeout()));
+            builder.connectTimeout(remoteSite.getConnectTimeout());
         }
         if (remoteSite.getRequestTimeout() != null) {
-            builder.readTimeout(DurationUtils.toMillisInt(remoteSite.getRequestTimeout()));
+            builder.requestTimeout(remoteSite.getRequestTimeout());
         }
         if (StringUtils.isNotBlank(remoteSite.getProxyHost()) && NumberUtilsWraps.isPositive(remoteSite.getProxyPort())) {
-            builder.proxy(InetProxyWraps.newHttpProxy(remoteSite.getProxyHost(), remoteSite.getProxyPort()));
+            builder.proxy(InetProxyWraps.newProxySelector(remoteSite.getProxyHost(), remoteSite.getProxyPort()));
         }
         return builder.build();
     }
