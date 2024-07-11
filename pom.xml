@@ -296,7 +296,6 @@
                         <link>https://docs.spring.io/spring-boot/docs/current/api/</link>
                         -->
                         <link>https://docs.spring.io/spring-framework/docs/current/javadoc-api/</link>
-                        <link>https://javadoc.io/doc/com.maxmind.geoip2/geoip2/laest/</link>
                     </links>
                     <taglets>
                         <taglet>
