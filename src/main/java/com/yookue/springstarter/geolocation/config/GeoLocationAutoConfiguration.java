@@ -118,7 +118,7 @@ public class GeoLocationAutoConfiguration {
             builder.requestTimeout(remoteSite.getRequestTimeout());
         }
         if (StringUtils.isNotBlank(remoteSite.getProxyHost()) && NumberUtilsWraps.isPositive(remoteSite.getProxyPort())) {
-            builder.proxy(InetProxyWraps.newProxySelector(remoteSite.getProxyHost(), remoteSite.getProxyPort()));
+            builder.proxy(InetProxyWraps.ofProxySelector(remoteSite.getProxyHost(), remoteSite.getProxyPort()));
         }
         return builder.build();
     }
