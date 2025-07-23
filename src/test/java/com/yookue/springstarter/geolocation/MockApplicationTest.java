@@ -39,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest(classes = MockApplicationInitializer.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Slf4j
+@SuppressWarnings("LoggingSimilarMessage")
 class MockApplicationTest {
     @Autowired(required = false)
     @Qualifier(value = GeoLocationAutoConfiguration.COUNTRY_DATABASE_READER)
@@ -53,7 +54,7 @@ class MockApplicationTest {
     private WebServiceClient webServiceClient;
 
     private static final String IP_ADDRESS = "128.101.101.101";    // $NON-NLS-1$
-    private static final InetAddress INET_ADDRESS = InetAddressWraps.getByName(IP_ADDRESS);
+    private static final InetAddress INET_ADDRESS = InetAddressWraps.getInetAddressByName(IP_ADDRESS);
 
     @Test
     void countryLocal() throws IOException, GeoIp2Exception {
