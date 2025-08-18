@@ -32,7 +32,6 @@ import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.WebServiceClient;
 import com.yookue.commonplexus.javaseutil.util.InetProxyWraps;
 import com.yookue.commonplexus.javaseutil.util.NumberUtilsWraps;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnAllProperties;
 import com.yookue.springstarter.geolocation.composer.GeoLocationResolver;
 import com.yookue.springstarter.geolocation.composer.impl.DefaultGeoLocationResolver;
 import com.yookue.springstarter.geolocation.enumeration.GeoDatabaseType;
@@ -63,40 +62,32 @@ public class GeoLocationAutoConfiguration {
 
     @Bean(name = COUNTRY_DATABASE_READER)
     @ConditionalOnMissingBean(name = COUNTRY_DATABASE_READER)
-    @ConditionalOnAllProperties(value = {
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", havingValue = "true", matchIfMissing = true),
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "country-db")
-    })
+    @ConditionalOnBooleanProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "country-db")
     public DatabaseReader countryDatabaseReader(@Nonnull GeoLocationProperties properties) throws IOException {
         return GeoDatabaseUtils.getDatabaseReader(properties, GeoDatabaseType.COUNTRY);
     }
 
     @Bean(name = CITY_DATABASE_READER)
     @ConditionalOnMissingBean(name = CITY_DATABASE_READER)
-    @ConditionalOnAllProperties(value = {
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", havingValue = "true", matchIfMissing = true),
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "city-db")
-    })
+    @ConditionalOnBooleanProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "city-db")
     public DatabaseReader cityDatabaseReader(@Nonnull GeoLocationProperties properties) throws IOException {
         return GeoDatabaseUtils.getDatabaseReader(properties, GeoDatabaseType.CITY);
     }
 
     @Bean(name = ASN_DATABASE_READER)
     @ConditionalOnMissingBean(name = ASN_DATABASE_READER)
-    @ConditionalOnAllProperties(value = {
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", havingValue = "true", matchIfMissing = true),
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "asn-db")
-    })
+    @ConditionalOnBooleanProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "enabled", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".local-file", name = "asn-db")
     public DatabaseReader asnDatabaseReader(@Nonnull GeoLocationProperties properties) throws IOException {
         return GeoDatabaseUtils.getDatabaseReader(properties, GeoDatabaseType.ASN);
     }
 
     @Bean(name = WEB_SERVICE_CLIENT)
     @ConditionalOnMissingBean(name = WEB_SERVICE_CLIENT)
-    @ConditionalOnAllProperties(value = {
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".remote-site", name = "enabled", havingValue = "true", matchIfMissing = true),
-        @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".remote-site", name = {"account-id", "license-key"})
-    })
+    @ConditionalOnBooleanProperty(prefix = PROPERTIES_PREFIX + ".remote-site", name = "enabled", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX + ".remote-site", name = {"account-id", "license-key"})
     public WebServiceClient webServiceClient(@Nonnull GeoLocationProperties properties) {
         GeoLocationProperties.RemoteSite remoteSite = properties.getRemoteSite();
         WebServiceClient.Builder builder = new WebServiceClient.Builder(remoteSite.getAccountId(), remoteSite.getLicenseKey());
