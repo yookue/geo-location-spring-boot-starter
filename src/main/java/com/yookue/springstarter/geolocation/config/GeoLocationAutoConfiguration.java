@@ -21,6 +21,7 @@ import java.io.IOException;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -50,7 +51,7 @@ import jakarta.annotation.Nullable;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(value = GeoLocationProperties.class)
-@ConditionalOnProperty(prefix = GeoLocationAutoConfiguration.PROPERTIES_PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnBooleanProperty(prefix = GeoLocationAutoConfiguration.PROPERTIES_PREFIX, name = "enabled", matchIfMissing = true)
 @SuppressWarnings({"JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class GeoLocationAutoConfiguration {
     public static final String PROPERTIES_PREFIX = "spring.geo-location";    // $NON-NLS-1$
