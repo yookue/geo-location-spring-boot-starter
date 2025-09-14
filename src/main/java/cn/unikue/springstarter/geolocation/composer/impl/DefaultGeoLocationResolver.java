@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.geolocation.composer.impl;
+package cn.unikue.springstarter.geolocation.composer.impl;
 
 
 import java.io.IOException;
@@ -34,9 +34,9 @@ import com.maxmind.geoip2.WebServiceClient;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 import com.maxmind.geoip2.model.CountryResponse;
-import com.yookue.commonplexus.javaseutil.constant.CharVariantConst;
-import com.yookue.commonplexus.javaseutil.util.InetAddressWraps;
-import com.yookue.springstarter.geolocation.composer.GeoLocationResolver;
+import cn.unikue.commonplexus.javaseutil.constant.CharVariantConst;
+import cn.unikue.commonplexus.javaseutil.util.InetAddressWraps;
+import cn.unikue.springstarter.geolocation.composer.GeoLocationResolver;
 import lombok.AllArgsConstructor;
 
 

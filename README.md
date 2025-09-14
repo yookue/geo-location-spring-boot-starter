@@ -8,7 +8,7 @@ Spring Boot application integrates `GeoLocation` quickly, to provide API for the
 
 ```xml
     <dependency>
-        <groupId>com.yookue.springstarter</groupId>
+        <groupId>cn.unikue.springstarter</groupId>
         <artifactId>geo-location-spring-boot-starter</artifactId>
         <version>LATEST</version>
     </dependency>
@@ -42,7 +42,7 @@ spring:
 
 ## Document
 
-- Github: https://github.com/yookue/geo-location-spring-boot-starter
+- Github: https://github.com/unikueltd/geo-location-spring-boot-starter
 - Geoip2 github: https://github.com/maxmind/GeoIP2-java
 - Geoip2 homepage: https://www.maxmind.com/en/geoip2-databases
 - Maxmind database: https://www.maxmind.com/en/geoip2-services-and-databases
@@ -60,12 +60,12 @@ See the `NOTICE.txt` file for required notices and attributions.
 
 ## Donation
 
-You like this package? Then [donate to us](https://yookue.com/donation) to support the development.
+You like this package? Then [donate to us](https://unikue.cn/donation) to support the development.
 
 ## Copyright
 
-Beijing Yookue Network Technology Ltd.
+Beijing Unikue Network Technology Ltd.
 
 ## Website
 
-- Yookue: https://yookue.com
+- Unikue: https://unikue.cn

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.geolocation.config;
+package cn.unikue.springstarter.geolocation.config;
 
 
 import java.io.IOException;
@@ -30,13 +30,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.WebServiceClient;
-import com.yookue.commonplexus.javaseutil.util.InetProxyWraps;
-import com.yookue.commonplexus.javaseutil.util.NumberUtilsWraps;
-import com.yookue.springstarter.geolocation.composer.GeoLocationResolver;
-import com.yookue.springstarter.geolocation.composer.impl.DefaultGeoLocationResolver;
-import com.yookue.springstarter.geolocation.enumeration.GeoDatabaseType;
-import com.yookue.springstarter.geolocation.property.GeoLocationProperties;
-import com.yookue.springstarter.geolocation.util.GeoDatabaseUtils;
+import cn.unikue.commonplexus.javaseutil.util.InetProxyWraps;
+import cn.unikue.commonplexus.javaseutil.util.NumberUtilsWraps;
+import cn.unikue.springstarter.geolocation.composer.GeoLocationResolver;
+import cn.unikue.springstarter.geolocation.composer.impl.DefaultGeoLocationResolver;
+import cn.unikue.springstarter.geolocation.enumeration.GeoDatabaseType;
+import cn.unikue.springstarter.geolocation.property.GeoLocationProperties;
+import cn.unikue.springstarter.geolocation.util.GeoDatabaseUtils;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 

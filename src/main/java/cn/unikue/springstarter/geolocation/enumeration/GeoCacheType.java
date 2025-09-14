@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,25 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.geolocation;
+package cn.unikue.springstarter.geolocation.enumeration;
 
 
-import jakarta.annotation.Nullable;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import cn.unikue.commonplexus.javaseutil.enumeration.ValueEnum;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 
-@SpringBootApplication
-class MockApplicationInitializer {
-    public static void main(@Nullable String[] args) {
-        SpringApplication.run(MockApplicationInitializer.class, args);
-    }
+/**
+ * Enumerations of GEO cache types
+ *
+ * @author David Hsing
+ */
+@AllArgsConstructor
+@Getter
+@SuppressWarnings("unused")
+public enum GeoCacheType implements ValueEnum<String> {
+    NO("no"),    // $NON-NLS-1$
+    CHM("chm");    // $NON-NLS-1$
+
+    private final String value;
 }

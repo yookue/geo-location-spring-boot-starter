@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.geolocation.util;
+package cn.unikue.springstarter.geolocation.util;
 
 
 import java.io.FileNotFoundException;
@@ -25,10 +25,10 @@ import org.springframework.util.CollectionUtils;
 import com.maxmind.db.CHMCache;
 import com.maxmind.db.NoCache;
 import com.maxmind.geoip2.DatabaseReader;
-import com.yookue.commonplexus.javaseutil.util.NumberUtilsWraps;
-import com.yookue.commonplexus.springutil.util.ResourceUtilsWraps;
-import com.yookue.springstarter.geolocation.enumeration.GeoDatabaseType;
-import com.yookue.springstarter.geolocation.property.GeoLocationProperties;
+import cn.unikue.commonplexus.javaseutil.util.NumberUtilsWraps;
+import cn.unikue.commonplexus.springutil.util.ResourceUtilsWraps;
+import cn.unikue.springstarter.geolocation.enumeration.GeoDatabaseType;
+import cn.unikue.springstarter.geolocation.property.GeoLocationProperties;
 
 
 /**
