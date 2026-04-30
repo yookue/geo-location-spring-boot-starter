@@ -21,22 +21,21 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Optional;
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.CharUtils;
-import org.apache.commons.lang3.LocaleUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.WebServiceClient;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
+import com.maxmind.geoip2.record.City;
+import com.maxmind.geoip2.record.Country;
 import com.maxmind.geoip2.model.CountryResponse;
 import cn.unikue.commonplexus.javaseutil.constant.CharVariantConst;
 import cn.unikue.commonplexus.javaseutil.util.InetAddressWraps;
 import cn.unikue.springstarter.geolocation.composer.GeoLocationResolver;
+import jakarta.annotation.Nullable;
 import lombok.AllArgsConstructor;
 
 
@@ -231,7 +230,9 @@ public class DefaultGeoLocationResolver implements GeoLocationResolver {
         if (response == null) {
             return null;
         }
-        return locale == null ? response.getCountry().getName() : extractLocalizedName(response.getCountry().getNames(), locale);
+        Locale targetLocale = ObjectUtils.defaultIfNull(locale, Locale.ENGLISH);
+        Country country = new Country(response.country(), List.of(targetLocale.toLanguageTag()));
+        return country.name();
     }
 
     @Nullable
@@ -239,20 +240,8 @@ public class DefaultGeoLocationResolver implements GeoLocationResolver {
         if (response == null) {
             return null;
         }
-        return locale == null ? response.getCity().getName() : extractLocalizedName(response.getCity().getNames(), locale);
-    }
-
-    @Nullable
-    private String extractLocalizedName(@Nullable Map<String, String> names, @Nonnull Locale locale) {
-        if (names == null || names.isEmpty()) {
-            return null;
-        }
-        List<Locale> lookups = LocaleUtils.localeLookupList(locale);
-        for (Locale lookup : lookups) {
-            if (names.containsKey(lookup.toLanguageTag())) {
-                return names.get(lookup.toLanguageTag());
-            }
-        }
-        return null;
+        Locale targetLocale = ObjectUtils.defaultIfNull(locale, Locale.ENGLISH);
+        City city = new City(response.city(), List.of(targetLocale.toLanguageTag()));
+        return city.name();
     }
 }

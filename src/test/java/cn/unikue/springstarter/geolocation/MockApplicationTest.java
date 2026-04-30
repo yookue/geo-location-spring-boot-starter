@@ -61,7 +61,7 @@ class MockApplicationTest {
         Assertions.assertNotNull(countryReader, "Local city reader can not be null");
         String methodName = StackTraceWraps.getExecutingMethodName();
         Optional<CountryResponse> countryResponse = countryReader.tryCountry(INET_ADDRESS);
-        OptionalPlainWraps.ifPresent(countryResponse, element -> log.info("{} = IP '{}' country is '{}'", methodName, IP_ADDRESS, element.getCountry().getName()));
+        OptionalPlainWraps.ifPresent(countryResponse, element -> log.info("{} = IP '{}' country is '{}'", methodName, IP_ADDRESS, element.country().name()));
     }
 
     @Test
@@ -69,7 +69,7 @@ class MockApplicationTest {
         Assertions.assertNotNull(cityReader, "Local city reader can not be null");
         String methodName = StackTraceWraps.getExecutingMethodName();
         Optional<CityResponse> cityResponse = cityReader.tryCity(INET_ADDRESS);
-        OptionalPlainWraps.ifPresent(cityResponse, element -> log.info("{} = IP '{}' city is {}", methodName, IP_ADDRESS, element.getCity().getName()));
+        OptionalPlainWraps.ifPresent(cityResponse, element -> log.info("{} = IP '{}' city is {}", methodName, IP_ADDRESS, element.city().name()));
     }
 
     @Test
@@ -77,7 +77,7 @@ class MockApplicationTest {
         Assertions.assertNotNull(webServiceClient, "Remote WebServiceClient can not be null");
         String methodName = StackTraceWraps.getExecutingMethodName();
         CountryResponse countryResponse = webServiceClient.country(INET_ADDRESS);
-        Optional.ofNullable(countryResponse).ifPresent(element -> log.info("{} = IP '{}' country is '{}'", methodName, IP_ADDRESS, element.getCountry().getName()));
+        Optional.ofNullable(countryResponse).ifPresent(element -> log.info("{} = IP '{}' country is '{}'", methodName, IP_ADDRESS, element.country().name()));
     }
 
     @Test
@@ -85,6 +85,6 @@ class MockApplicationTest {
         Assertions.assertNotNull(webServiceClient, "Remote WebServiceClient can not be null");
         String methodName = StackTraceWraps.getExecutingMethodName();
         CityResponse cityResponse = webServiceClient.city(INET_ADDRESS);
-        Optional.ofNullable(cityResponse).ifPresent(element -> log.info("{} = IP '{}' city is '{}'", methodName, IP_ADDRESS, element.getCity().getName()));
+        Optional.ofNullable(cityResponse).ifPresent(element -> log.info("{} = IP '{}' city is '{}'", methodName, IP_ADDRESS, element.city().name()));
     }
 }
